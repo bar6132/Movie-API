@@ -9,12 +9,13 @@ export const MovieDetail = () => {
   
   //eslint-disable-next-line
   const pageTitle = useTitle(movie.title);
+  const Api = process.env.REACT_APP_YOUR_Api;
 
   const image = movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : Backup ;
 
   useEffect(() => {
     async function fetchMovie(){
-      const response = await fetch(`https://api.themoviedb.org/3/movie/${params.id}?api_key=b80d59c33d6d57ed9c7e3713f91c188a`);
+      const response = await fetch(`https://api.themoviedb.org/3/movie/${params.id}?api_key=${Api}`);
       const json = await response.json()
       setMovie(json);
       console.log(json);
